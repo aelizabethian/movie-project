@@ -22,6 +22,7 @@ export const fetchMovie = (id) => dispatch => {
 };
 
 //Note that the callback() below is a redirect after they've signed up
+//ALSO NOTE that the post/get requests below don't have local host because we specified that in the proxy (package.json) because we don't want it going to localhost on deployment
 export const signup = (formProps, callback) => dispatch => {
   axios.post(
     '/auth/signup',
@@ -57,7 +58,7 @@ export const signup = (formProps, callback) => dispatch => {
 
 export const signin = (formProps, callback) => dispatch => {
   axios.post(
-    'http://localhost:5000/auth/signin',
+    '/auth/signin',
     formProps
   ).then(function (response) {
     dispatch({ type: AUTH_USER, payload: response.data });
@@ -79,7 +80,7 @@ export const fetchUser = () => dispatch => {
   };
 
   axios.get(
-    'http://localhost:5000/auth/current_user',
+    '/auth/current_user',
     config
   ).then(function (response) {
     dispatch({ type: AUTH_USER, payload: response.data });
@@ -107,7 +108,7 @@ export const addMovieToWatchList = (movie) => dispatch => {
   };
 
   axios.post(
-    'http://localhost:5000/api/watchlist',
+    '/api/watchlist',
     { movie },
     config
   ).then(function (response) {
@@ -126,7 +127,7 @@ export const fetchWatchListMovies = () => dispatch => {
   };
 
   axios.get(
-    'http://localhost:5000/api/watchlist',
+    '/api/watchlist',
     config
   ).then(function (response) {
     dispatch({ type: FETCH_WATCHLIST_MOVIES, payload: response.data });
