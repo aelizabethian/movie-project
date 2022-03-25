@@ -6,6 +6,10 @@ const passport = require('passport');
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false });
 
+
+//NOTE THAT THESE ROUTE FUNCTIONS ARE WRITTEN IN THE CONTROLLERS FOLDERS!
+
+
 module.exports = function(app) {
   app.post('/auth/signin', requireSignin, Authentication.signin);
   app.post('/auth/signup', Authentication.signup);

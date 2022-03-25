@@ -13,6 +13,7 @@ const App = (props) => {
     } 
   }, [authenticated]);
 
+  //props.children are used on components that represent 'generic boxes' and that 'don't know their children ahead of time. It is used to display whatever you include between the opening and closing tags when invoking a component.
   return (
     <AppContainer>
       {props.children}

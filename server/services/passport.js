@@ -36,6 +36,8 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
   // See if the user ID in the payload exists in our database
   // If it does, call 'done' with that other
   // otherwise, call done without a user object
+  //NOTE BELOW THAT usub is recommended (along with iss for issued at, exp for expiration, and aud for audience in payload of jwt but it has to be specified)
+  //SUB was defined in controllers/authetntication when defining token for User
   User.findById(payload.sub, function(err, user) {
     if (err) { return done(err, false) }
 

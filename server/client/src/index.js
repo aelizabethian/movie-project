@@ -33,7 +33,8 @@ render(
             <Route exact path="/watch-list">
               <MovieList type='watch-list'/>
             </Route>
-
+            
+            {/* We have this route as the detail view when the watchlist btn has already displayed. It only differs from the one below because the button is now gone. */}
             <Route exact path="/watch-list/:id" component={MovieDetail} />
 
             <Route exact path="/:id">

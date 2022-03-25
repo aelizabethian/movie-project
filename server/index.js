@@ -18,6 +18,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//Don't get confused here - this is a function exported in the router file. It has to do with authentication/auth
 router(app);
 
 if (process.env.NODE_ENV === "production") {
@@ -29,6 +30,7 @@ if (process.env.NODE_ENV === "production") {
   // if it doesn't recognize the route
   const path = require("path");
   app.get("*", (req, res) => {
+    //This below is why we have the client folder inside of the server because it's referenced here!
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }

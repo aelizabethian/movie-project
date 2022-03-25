@@ -7,11 +7,13 @@ const DEFAULT_STATE = {
   order: []
 }
 
+//Why an entity here? An Entity is a singular object that has a unique identifier associated with it. Array and Object are more generic structures that can't be uniquely identified. 
 const moviesSchema = new schema.Entity('movies', undefined);
 
 export default function(state = DEFAULT_STATE, action) {
   switch (action.type) {
     case FETCH_MOVIES:
+//By normalizing we'll end up with an object of objects, with each id as an object key instead of the individual movie
       const normalizedMovies = normalize(action.payload.results, [moviesSchema]);
 
       return {

@@ -5,6 +5,7 @@ import Overdrive from "react-overdrive";
 
 const POSTER_PATH = "http://image.tmdb.org/t/p/w185";
 
+//Props came from MovieList
 const Movie = (props) => {
   return (
     <Link to={props.url}>

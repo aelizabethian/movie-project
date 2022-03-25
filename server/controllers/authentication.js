@@ -8,6 +8,8 @@ function tokenForUser(user) {
     exp: Math.round(Date.now() / 1000 + 5 * 60 * 60)}, keys.TOKEN_SECRET)
 };
 
+//Think of controllers as response to all of the route functions!
+//Exports here just another way of exporting ind functions. To see a comparison of module.exports vs this, see https://www.sitepoint.com/understanding-module-exports-exports-node-js/;
 exports.signin = function(req, res, next) {
   // User has already had their email and password auth'd
   // We just need to give them a token
@@ -18,6 +20,7 @@ exports.signin = function(req, res, next) {
 
 exports.currentUser = function(req, res) {
   const user = {
+    //We're including email because it will be used to identify them later
     email: req.user.email,
     token: tokenForUser(req.user),
     watchListCount: req.user.watchList.length
